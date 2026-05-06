@@ -16,7 +16,7 @@ function SelectPlayers() {
             <Typography variant="h2" align="center" gutterBottom>
                 Brain Buster
             </Typography>
-            <Typography variant="h6" align="center" gutterBottom>
+            <Typography variant="h5" align="center" gutterBottom>
                 Select Number of Players
             </Typography>
             <Box
@@ -31,10 +31,10 @@ function SelectPlayers() {
                 gap: 2,
             }}
             >
-                <Button variant="outlined" onClick={() => {setNumPlayers(1)}}>One Player</Button>
-                <Button variant="outlined" onClick={() => {setNumPlayers(2)}}>Two Players</Button>
-                <Button variant="outlined" onClick={() => {setNumPlayers(3)}}>Three Players</Button>
-                <Button variant="outlined" onClick={() => {setNumPlayers(4)}}>Four Players</Button>
+                <Button variant="outlined" onClick={() => {setNumPlayers(1)}} sx={{fontSize: 'large', height: '40px',}}>One Player</Button>
+                <Button variant="outlined" onClick={() => {setNumPlayers(2)}} sx={{fontSize: 'large', height: '40px',}}>Two Players</Button>
+                <Button variant="outlined" onClick={() => {setNumPlayers(3)}} sx={{fontSize: 'large', height: '40px',}}>Three Players</Button>
+                <Button variant="outlined" onClick={() => {setNumPlayers(4)}} sx={{fontSize: 'large', height: '40px',}}>Four Players</Button>
             </Box>
             <Button 
             variant='contained'

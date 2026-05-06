@@ -27,14 +27,20 @@ function SelectPlayers() {
             gap: 2,
           }}
         >
-            <Button variant="contained">One Player</Button>
-            <Button variant="contained">Two Players</Button>
-            <Button variant="contained">Three Players</Button>
-            <Button variant="contained">Four Players</Button>
+            <Button variant="outlined">One Player</Button>
+            <Button variant="outlined">Two Players</Button>
+            <Button variant="outlined">Three Players</Button>
+            <Button variant="outlined">Four Players</Button>
         </Box>
-        <IconButton>
-            <ArrowForwardIosIcon />
-        </IconButton>
+        <Button 
+        variant='contained'
+        sx={{
+            marginTop: 4,
+            width: '400px',
+            alignSelf: 'center',
+            fontSize: 'large',
+        }}
+        >Next</Button>
       </Box>
   )
 }

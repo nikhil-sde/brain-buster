@@ -36,7 +36,7 @@ function SelectPlayers() {
         variant='contained'
         sx={{
             marginTop: 4,
-            width: '400px',
+            width: '416px',
             alignSelf: 'center',
             fontSize: 'large',
         }}

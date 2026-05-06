@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router'
 import { useState } from 'react'
 
 function SelectPlayers() {
-    const [numPlayers, setNumPlayers] = useState(0);
+    const [numPlayers, setNumPlayers] = useState(1);
     const navigate = useNavigate()
 
     return (

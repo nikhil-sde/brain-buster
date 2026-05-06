@@ -22,8 +22,8 @@ function PlayerNames() {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        console.log(names)
-        console.log("Submitted")
+        localStorage.setItem('playerNames', JSON.stringify(names))
+        navigate('/game')
     }
 
     for(let i = 1; i <= Number(params.numPlayers); i++) {

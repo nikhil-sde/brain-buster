@@ -1,11 +1,8 @@
 import { Box } from '@mui/material';
-import { useLocation } from 'react-router';
 import { List, ListItem, ListItemText, Typography } from '@mui/material';
 
 function LeaderBoard() {
     const playerNames = JSON.parse(localStorage.getItem('playerNames') || '{}');
-    const location = useLocation();
-    const { type, size } = location.state;
     const players = [];
 
     for (let i = 1; i <= 4; i++) {

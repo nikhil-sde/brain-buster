@@ -8,12 +8,13 @@ import {
     Button,
 } from '@mui/material';
 import { useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate, useLocation } from 'react-router';
 
 function GridType() {
     const [type, setType] = useState('Number');
     const [size, setsize] = useState(4);
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleTypeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setType(event.target.value);

@@ -1,11 +1,14 @@
-import { Box } from '@mui/material'
+import { Box } from '@mui/material';
+import Board from './Board';
+import LeaderBoard from './LeaderBoard';
 
 function Game() {
-  return (
-    <Box>
-      
-    </Box>
-  )
+    return (
+        <Box>
+            <LeaderBoard />
+            <Board />
+        </Box>
+    );
 }
 
-export default Game
+export default Game;

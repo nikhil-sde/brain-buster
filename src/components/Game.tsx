@@ -4,7 +4,7 @@ import LeaderBoard from './LeaderBoard';
 
 function Game() {
     return (
-        <Box sx={{ display: 'flex', height: '90vh', alignItems: 'center', justifyContent: 'center', gap: 20}}>
+        <Box sx={{ display: 'flex', gap: 20, mt: 5, ml: 20 }}>
             <LeaderBoard />
             <Board />
         </Box>

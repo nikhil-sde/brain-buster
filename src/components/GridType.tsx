@@ -43,8 +43,8 @@ function GridType() {
                             handleTypeChange(event);
                         }}
                     >
-                        <FormControlLabel value="Number" control={<Radio />} label="Number" />
-                        <FormControlLabel value="Alphabate" control={<Radio />} label="Alphabate" />
+                        <FormControlLabel value="Numbers" control={<Radio />} label="Numbers" />
+                        <FormControlLabel value="Alphabets" control={<Radio />} label="Alphabets" />
                         <FormControlLabel value="Shapes" control={<Radio />} label="Shapes" />
                         <FormControlLabel value="Emojis" control={<Radio />} label="Emojis" />
                     </RadioGroup>

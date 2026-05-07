@@ -15,7 +15,7 @@ function LeaderBoard() {
 
     return (
         <Box>
-            <Typography variant="h5">Score Board</Typography>
+            <Typography variant="h3">Score Board</Typography>
             <List>{players}</List>
         </Box>
     );

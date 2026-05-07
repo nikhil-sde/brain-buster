@@ -23,7 +23,7 @@ function PlayerNames() {
     const handleSubmit = (event) => {
         event.preventDefault()
         localStorage.setItem('playerNames', JSON.stringify(names))
-        navigate('/game')
+        navigate('/grid-type')
     }
 
     for(let i = 1; i <= Number(params.numPlayers); i++) {
@@ -59,7 +59,7 @@ function PlayerNames() {
                 {playerTextFields}
 
                 <Button variant="contained" type="submit">
-                    Let's Play!
+                    Next
                 </Button>
             </Box>
             <Button variant="outlined" onClick={() => {navigate('/')}} sx={{marginTop: 2, width: 300}}>

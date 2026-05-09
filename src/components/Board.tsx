@@ -9,6 +9,7 @@ function Board() {
     const [visible, setVisible] = useState(false);
     const [isOpened, setIsOpened] = useState(false);
     const [id, setId] = useState('');
+    const [prevBtn, setPrevBtn] = useState<HTMLElement | null>(null);
     const [symbols, setSymbols] = useState([]);
     const grids = [];
 
@@ -22,26 +23,25 @@ function Board() {
     };
 
     const match = (e: React.MouseEvent<HTMLDivElement>) => {
-        console.log('match', isOpened);
         if (isOpened) {
             const prevButton = grids.filter((btn) => {
                 return btn.props.id === id;
             });
-            console.log('match', 'if');
-            const firstValue = prevButton[0].props.children;
+            const firstValue = prevBtn?.textContent;
             const secondValue = e.target.textContent;
             if (firstValue !== secondValue) {
                 setTimeout(() => {
-                    prevButton[0].props.sx.color = 'transparent';
+                    if (prevBtn) {
+                        prevBtn.style.color = 'transparent';
+                    }
                     e.target.style.color = 'transparent';
                 }, 1000);
             }
             setId('');
             setIsOpened(false);
         } else {
-            console.log('match', 'else');
             setIsOpened(true);
-            setId(e.target.id);
+            setPrevBtn(e.target);
         }
     };
 

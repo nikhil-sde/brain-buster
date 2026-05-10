@@ -1,14 +1,32 @@
 import { Box } from '@mui/material';
 import { List, ListItem, ListItemText, Typography } from '@mui/material';
 
-function LeaderBoard() {
+interface LeaderBoardProps {
+    turn: {
+        player1: boolean;
+        player2: boolean;
+        player3: boolean;
+        player4: boolean;
+    };
+    score: {
+        player1: number;
+        player2: number;
+        player3: number;
+        player4: number;
+    };
+}
+
+function LeaderBoard({ turn, score }: LeaderBoardProps) {
     const playerNames = JSON.parse(localStorage.getItem('playerNames') || '{}');
     const players = [];
 
     for (let i = 1; i <= 4; i++) {
         players.push(
             <ListItem key={`player-${i}`}>
-                <ListItemText primary={playerNames[`player${i}`]} secondary={`Score: 1`} />
+                <ListItemText
+                    primary={playerNames[`player${i}`]}
+                    secondary={`Score: ${score[`player${i}`]}`}
+                />
             </ListItem>,
         );
     }

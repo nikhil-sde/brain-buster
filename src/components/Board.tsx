@@ -2,7 +2,24 @@ import { Grid, Paper, Button } from '@mui/material';
 import { useLocation } from 'react-router';
 import { useState, useEffect } from 'react';
 
-function Board() {
+interface BoardProps {
+    turn: {
+        player1: boolean;
+        player2: boolean;
+        player3: boolean;
+        player4: boolean;
+    };
+    setScore: React.Dispatch<
+        React.SetStateAction<{
+            player1: number;
+            player2: number;
+            player3: number;
+            player4: number;
+        }>
+    >;
+}
+
+function Board({ turn, setScore }: BoardProps) {
     const location = useLocation();
     const { type, size } = location.state;
     const numOfSymbols = (size * size) / 2;
@@ -11,6 +28,8 @@ function Board() {
     const [id, setId] = useState('');
     const [prevBtn, setPrevBtn] = useState<HTMLElement | null>(null);
     const [symbols, setSymbols] = useState([]);
+    // const [turn, setTurn] = useState({ player1: true, player2: false, player3: false, player4: false });
+    const [count, setCount] = useState(1);
     const grids = [];
 
     const shuffle = (array: any[]) => {
@@ -20,6 +39,37 @@ function Board() {
             [array[i], array[j]] = [array[j], array[i]];
         }
         // console.log('shuffle', array);
+    };
+
+    const handleTurn = () => {
+        switch (count) {
+            case 1:
+                turn.player1 = false;
+                turn.player2 = true;
+                turn.player3 = false;
+                turn.player4 = false;
+                break;
+            case 2:
+                turn.player1 = false;
+                turn.player2 = false;
+                turn.player3 = true;
+                turn.player4 = false;
+                break;
+            case 3:
+                turn.player1 = false;
+                turn.player2 = false;
+                turn.player3 = false;
+                turn.player4 = true;
+                break;
+            case 0:
+                turn.player1 = true;
+                turn.player2 = false;
+                turn.player3 = false;
+                turn.player4 = false;
+                break;
+            default:
+                break;
+        }
     };
 
     const match = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -36,12 +86,28 @@ function Board() {
                     }
                     e.target.style.color = 'transparent';
                 }, 1000);
+                handleTurn();
+                setCount((prev) => (prev + 1) % 4);
+            } else {
+                setScore((prev) => {
+                    if (turn.player1) {
+                        return { ...prev, player1: prev.player1 + 1 };
+                    } else if (turn.player2) {
+                        return { ...prev, player2: prev.player2 + 1 };
+                    } else if (turn.player3) {
+                        return { ...prev, player3: prev.player3 + 1 };
+                    } else {
+                        return { ...prev, player4: prev.player4 + 1 };
+                    }
+                });
             }
             setId('');
             setIsOpened(false);
+            console.log('change', turn);
         } else {
             setIsOpened(true);
             setPrevBtn(e.target);
+            console.log('not change', turn);
         }
     };
 

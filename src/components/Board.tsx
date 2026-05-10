@@ -17,9 +17,17 @@ interface BoardProps {
             player4: number;
         }>
     >;
+    setTurn: React.Dispatch<
+        React.SetStateAction<{
+            player1: boolean;
+            player2: boolean;
+            player3: boolean;
+            player4: boolean;
+        }>
+    >;
 }
 
-function Board({ turn, setScore }: BoardProps) {
+function Board({ turn, setScore, setTurn }: BoardProps) {
     const location = useLocation();
     const { type, size } = location.state;
     const numOfSymbols = (size * size) / 2;
@@ -42,34 +50,20 @@ function Board({ turn, setScore }: BoardProps) {
     };
 
     const handleTurn = () => {
-        switch (count) {
-            case 1:
-                turn.player1 = false;
-                turn.player2 = true;
-                turn.player3 = false;
-                turn.player4 = false;
-                break;
-            case 2:
-                turn.player1 = false;
-                turn.player2 = false;
-                turn.player3 = true;
-                turn.player4 = false;
-                break;
-            case 3:
-                turn.player1 = false;
-                turn.player2 = false;
-                turn.player3 = false;
-                turn.player4 = true;
-                break;
-            case 0:
-                turn.player1 = true;
-                turn.player2 = false;
-                turn.player3 = false;
-                turn.player4 = false;
-                break;
-            default:
-                break;
-        }
+        setTurn((prev) => {
+            switch (count) {
+                case 1:
+                    return { player1: false, player2: true, player3: false, player4: false };
+                case 2:
+                    return { player1: false, player2: false, player3: true, player4: false };
+                case 3:
+                    return { player1: false, player2: false, player3: false, player4: true };
+                case 0:
+                    return { player1: true, player2: false, player3: false, player4: false };
+                default:
+                    return prev;
+            }
+        });
     };
 
     const match = (e: React.MouseEvent<HTMLDivElement>) => {

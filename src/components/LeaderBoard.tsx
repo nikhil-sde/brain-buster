@@ -22,8 +22,7 @@ function LeaderBoard({ turn, score }: LeaderBoardProps) {
     const numPlayers = Number(localStorage.getItem('numPlayers') || '0');
     const [players, setPlayers] = useState<JSX.Element[]>([]);
     const listStyle = {
-        backgroundColor: 'grey',
-        color: 'white',
+        boxShadow: '0px 0px 10px 2px grey',
         borderRadius: '10px',
     };
 
@@ -42,7 +41,7 @@ function LeaderBoard({ turn, score }: LeaderBoardProps) {
             }
             return playerList;
         });
-    }, [turn]);
+    }, [turn, score]);
 
     return (
         <Box>

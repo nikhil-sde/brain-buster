@@ -19,6 +19,7 @@ interface LeaderBoardProps {
 
 function LeaderBoard({ turn, score }: LeaderBoardProps) {
     const playerNames = JSON.parse(localStorage.getItem('playerNames') || '{}');
+    const numPlayers = Number(localStorage.getItem('numPlayers') || '0');
     const [players, setPlayers] = useState<JSX.Element[]>([]);
     const listStyle = {
         backgroundColor: 'grey',
@@ -29,7 +30,7 @@ function LeaderBoard({ turn, score }: LeaderBoardProps) {
     useEffect(() => {
         setPlayers(() => {
             const playerList = [];
-            for (let i = 1; i <= 4; i++) {
+            for (let i = 1; i <= numPlayers; i++) {
                 playerList.push(
                     <ListItem key={`player-${i}`} sx={{ ...(turn[`player${i}`] ? listStyle : {}) }}>
                         <ListItemText

@@ -36,6 +36,7 @@ function Board({ turn, setScore, setTurn }: BoardProps) {
     const [id, setId] = useState('');
     const [prevBtn, setPrevBtn] = useState<HTMLElement | null>(null);
     const [symbols, setSymbols] = useState([]);
+    const numPlayers = Number(localStorage.getItem('numPlayers') || '0');
     // const [turn, setTurn] = useState({ player1: true, player2: false, player3: false, player4: false });
     const [count, setCount] = useState(1);
     const grids = [];
@@ -81,7 +82,7 @@ function Board({ turn, setScore, setTurn }: BoardProps) {
                     e.target.style.color = 'transparent';
                 }, 1000);
                 handleTurn();
-                setCount((prev) => (prev + 1) % 4);
+                setCount((prev) => (prev + 1) % numPlayers);
             } else {
                 setScore((prev) => {
                     if (turn.player1) {

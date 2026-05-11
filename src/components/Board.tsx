@@ -69,9 +69,9 @@ function Board({ turn, setScore, setTurn }: BoardProps) {
 
     const match = (e: React.MouseEvent<HTMLDivElement>) => {
         if (isOpened) {
-            const prevButton = grids.filter((btn) => {
-                return btn.props.id === id;
-            });
+            // const prevButton = grids.filter((btn) => {
+            //     return btn.props.id === id;
+            // });
             const firstValue = prevBtn?.textContent;
             const secondValue = e.target.textContent;
             if (firstValue !== secondValue) {
@@ -98,11 +98,11 @@ function Board({ turn, setScore, setTurn }: BoardProps) {
             }
             setId('');
             setIsOpened(false);
-            console.log('change', turn);
+            // console.log('change', turn);
         } else {
             setIsOpened(true);
             setPrevBtn(e.target);
-            console.log('not change', turn);
+            // console.log('not change', turn);
         }
     };
 
@@ -184,6 +184,23 @@ function Board({ turn, setScore, setTurn }: BoardProps) {
             }}
         >
             {grids}
+            {size === 5 ||
+                (size === 7 && (
+                    <Button
+                        xs={2}
+                        sx={{
+                            height: '80px',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            fontSize: '40px',
+                            border: '1px solid black',
+                            color: 'black',
+                        }}
+                    >
+                        o
+                    </Button>
+                ))}
         </Grid>
     );
 }

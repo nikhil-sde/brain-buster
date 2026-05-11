@@ -11,7 +11,7 @@ import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router';
 
 function GridType() {
-    const [type, setType] = useState('Number');
+    const [type, setType] = useState('Numbers');
     const [size, setsize] = useState(4);
     const navigate = useNavigate();
     const location = useLocation();

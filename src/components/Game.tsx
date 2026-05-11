@@ -4,7 +4,6 @@ import LeaderBoard from './LeaderBoard';
 import { useState } from 'react';
 
 function Game() {
-    // const turn = { player1: true, player2: false, player3: false, player4: false };
     const [turn, setTurn] = useState({ player1: true, player2: false, player3: false, player4: false });
     const [score, setScore] = useState({ player1: 0, player2: 0, player3: 0, player4: 0 });
 

@@ -184,23 +184,22 @@ function Board({ turn, setScore, setTurn }: BoardProps) {
             }}
         >
             {grids}
-            {size === 5 ||
-                (size === 7 && (
-                    <Button
-                        xs={2}
-                        sx={{
-                            height: '80px',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            fontSize: '40px',
-                            border: '1px solid black',
-                            color: 'black',
-                        }}
-                    >
-                        o
-                    </Button>
-                ))}
+            {(size === 5 || 7) && (
+                <Button
+                    xs={2}
+                    sx={{
+                        height: '80px',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        fontSize: '40px',
+                        border: '1px solid black',
+                        color: 'black',
+                    }}
+                >
+                    o
+                </Button>
+            )}
         </Grid>
     );
 }

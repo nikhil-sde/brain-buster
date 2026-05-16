@@ -184,7 +184,7 @@ function Board({ turn, setScore, setTurn }: BoardProps) {
             }}
         >
             {grids}
-            {(size === 5 || 7) && (
+            {(size === 5 || size === 7) && (
                 <Button
                     xs={2}
                     sx={{

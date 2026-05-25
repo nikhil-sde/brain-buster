@@ -36,12 +36,12 @@ function Board({ turn, setScore, setTurn }: BoardProps) {
     const [isOpened, setIsOpened] = useState(false);
     const [id, setId] = useState('');
     const [prevBtn, setPrevBtn] = useState<HTMLElement | null>(null);
-    const [symbols, setSymbols] = useState([]);
+    const [symbols, setSymbols] = useState<(string | number)[]>([]);
     const numPlayers = Number(localStorage.getItem('numPlayers') || '0');
     // const [turn, setTurn] = useState({ player1: true, player2: false, player3: false, player4: false });
     const [count, setCount] = useState(1);
     const [winner, setWinner] = useState(false);
-    const grids:ReactNode[]  = [];
+    const grids: ReactNode[] = [];
 
     const shuffle = (array: any[]) => {
         // console.log('shuffle', symbols);

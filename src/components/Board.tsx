@@ -39,6 +39,7 @@ function Board({ turn, setScore, setTurn }: BoardProps) {
     const numPlayers = Number(localStorage.getItem('numPlayers') || '0');
     // const [turn, setTurn] = useState({ player1: true, player2: false, player3: false, player4: false });
     const [count, setCount] = useState(1);
+    const [winner, setWinner] = useState(false);
     const grids = [];
 
     const shuffle = (array: any[]) => {
@@ -174,33 +175,36 @@ function Board({ turn, setScore, setTurn }: BoardProps) {
     });
 
     return (
-        <Grid
-            container
-            sx={{
-                width: 360,
-                display: 'grid',
-                gridTemplateColumns: `repeat(${size}, 80px)`,
-                gap: 1,
-            }}
-        >
-            {grids}
-            {(size === 5 || size === 7) && (
-                <Button
-                    xs={2}
-                    sx={{
-                        height: '80px',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        fontSize: '40px',
-                        border: '1px solid black',
-                        color: 'black',
-                    }}
-                >
-                    o
-                </Button>
-            )}
-        </Grid>
+        <>
+            <Grid
+                container
+                sx={{
+                    width: 360,
+                    display: 'grid',
+                    gridTemplateColumns: `repeat(${size}, 80px)`,
+                    gap: 1,
+                }}
+            >
+                {grids}
+                {(size === 5 || size === 7) && (
+                    <Button
+                        xs={2}
+                        sx={{
+                            height: '80px',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            fontSize: '40px',
+                            border: '1px solid black',
+                            color: 'black',
+                        }}
+                    >
+                        o
+                    </Button>
+                )}
+            </Grid>
+            (winner ? <Winner setWinner={setWinner} />)
+        </>
     );
 }
 

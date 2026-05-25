@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import { List, ListItem, ListItemText, Typography } from '@mui/material';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, type ReactNode } from 'react';
 
 interface LeaderBoardProps {
     turn: {
@@ -20,7 +20,7 @@ interface LeaderBoardProps {
 function LeaderBoard({ turn, score }: LeaderBoardProps) {
     const playerNames = JSON.parse(localStorage.getItem('playerNames') || '{}');
     const numPlayers = Number(localStorage.getItem('numPlayers') || '0');
-    const [players, setPlayers] = useState<JSX.Element[]>([]);
+    const [players, setPlayers] = useState<ReactNode[]>([]);
     const listStyle = {
         boxShadow: '0px 0px 10px 2px grey',
         borderRadius: '10px',
@@ -31,10 +31,10 @@ function LeaderBoard({ turn, score }: LeaderBoardProps) {
             const playerList = [];
             for (let i = 1; i <= numPlayers; i++) {
                 playerList.push(
-                    <ListItem key={`player-${i}`} sx={{ ...(turn[`player${i}`] ? listStyle : {}) }}>
+                    <ListItem key={`player-${i}`} sx={{ ...((turn as any)[`player${i}`] ? listStyle : {}) }}>
                         <ListItemText
                             primary={playerNames[`player${i}`]}
-                            secondary={`Score: ${score[`player${i}`]}`}
+                            secondary={`Score: ${(score as any)[`player${i}`]}`}
                         />
                     </ListItem>,
                 );

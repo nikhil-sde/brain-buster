@@ -8,13 +8,12 @@ import {
     Button,
 } from '@mui/material';
 import { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router';
+import { useNavigate } from 'react-router';
 
 function GridType() {
     const [type, setType] = useState('Numbers');
     const [size, setsize] = useState(4);
     const navigate = useNavigate();
-    const location = useLocation();
 
     const handleTypeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setType(event.target.value);
@@ -39,7 +38,7 @@ function GridType() {
                     <FormLabel id="demo-radio-buttons-group-label">Grid Type</FormLabel>
                     <RadioGroup
                         value={type}
-                        onChange={() => {
+                        onChange={(event) => {
                             handleTypeChange(event);
                         }}
                     >
@@ -53,7 +52,7 @@ function GridType() {
                     <FormLabel id="demo-radio-buttons-group-label">Grid Size</FormLabel>
                     <RadioGroup
                         value={size}
-                        onChange={() => {
+                        onChange={(event) => {
                             handleSizeChange(event);
                         }}
                     >

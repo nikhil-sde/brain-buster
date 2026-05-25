@@ -1,9 +1,11 @@
 import { Box } from '@mui/material';
 
-function winner() {
-    return <Box>
-        
-    </Box>;
+interface WinnerProps {
+    setWinner: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default winner;
+function Winner({ setWinner }: WinnerProps) {
+    return <Box></Box>;
+}
+
+export default Winner;

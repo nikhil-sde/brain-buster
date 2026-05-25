@@ -1,6 +1,7 @@
 import { Grid, Paper, Button } from '@mui/material';
 import { useLocation } from 'react-router';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, type ReactNode } from 'react';
+import Winner from './Winner';
 
 interface BoardProps {
     turn: {
@@ -40,7 +41,7 @@ function Board({ turn, setScore, setTurn }: BoardProps) {
     // const [turn, setTurn] = useState({ player1: true, player2: false, player3: false, player4: false });
     const [count, setCount] = useState(1);
     const [winner, setWinner] = useState(false);
-    const grids = [];
+    const grids:ReactNode[]  = [];
 
     const shuffle = (array: any[]) => {
         // console.log('shuffle', symbols);
@@ -68,19 +69,19 @@ function Board({ turn, setScore, setTurn }: BoardProps) {
         });
     };
 
-    const match = (e: React.MouseEvent<HTMLDivElement>) => {
+    const match = (e: React.MouseEvent<HTMLButtonElement>) => {
         if (isOpened) {
             // const prevButton = grids.filter((btn) => {
             //     return btn.props.id === id;
             // });
             const firstValue = prevBtn?.textContent;
-            const secondValue = e.target.textContent;
+            const secondValue = (e.target as HTMLDivElement).textContent;
             if (firstValue !== secondValue) {
                 setTimeout(() => {
                     if (prevBtn) {
                         prevBtn.style.color = 'transparent';
                     }
-                    e.target.style.color = 'transparent';
+                    (e.target as HTMLDivElement).style.color = 'transparent';
                 }, 1000);
                 handleTurn();
                 setCount((prev) => (prev + 1) % numPlayers);
@@ -102,13 +103,13 @@ function Board({ turn, setScore, setTurn }: BoardProps) {
             // console.log('change', turn);
         } else {
             setIsOpened(true);
-            setPrevBtn(e.target);
+            setPrevBtn(e.target as HTMLElement);
             // console.log('not change', turn);
         }
     };
 
-    const handleVisible = (e: React.MouseEvent<HTMLDivElement>) => {
-        const target = e.target as HTMLDivElement;
+    const handleVisible = (e: React.MouseEvent<HTMLButtonElement>) => {
+        const target = e.target as HTMLButtonElement;
         target.style.color = 'black';
         match(e);
     };
@@ -150,12 +151,11 @@ function Board({ turn, setScore, setTurn }: BoardProps) {
         shuffle(tempSymbols);
 
         setSymbols(tempSymbols);
-    }, []);
+    }, [numOfSymbols, type]);
 
     symbols.map((symbol, i) => {
         grids.push(
             <Button
-                xs={2}
                 key={i}
                 id={i.toString()}
                 sx={{
@@ -188,7 +188,6 @@ function Board({ turn, setScore, setTurn }: BoardProps) {
                 {grids}
                 {(size === 5 || size === 7) && (
                     <Button
-                        xs={2}
                         sx={{
                             height: '80px',
                             display: 'flex',

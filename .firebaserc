@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "projects-3d450"
+  },
+  "targets": {
+    "projects-3d450": {
+      "hosting": {
+        "b2": [
+          "brain-buster-nikhil-se"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
